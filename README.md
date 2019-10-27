@@ -30,9 +30,7 @@ With the application running, you can visualize the API documentation in:
 
 #### Postman
 
-For test the API endpoints and the operations exposed by it, you can use this Postman Collection:
-
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b8dacca394e1404912b8)
+For test the API endpoints and the operations exposed by it, you can use the Postman Collection provided in a JSON file under the name `Customer API.postman_collection.json`, in the repository root directory.
 
         
 
