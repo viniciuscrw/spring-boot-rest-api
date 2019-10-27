@@ -1,6 +1,6 @@
-package com.crud.example.springbootrestapi.repository;
+package com.crud.example.customerapi.repository;
 
-import com.crud.example.springbootrestapi.model.Address;
+import com.crud.example.customerapi.model.Address;
 import org.springframework.data.repository.CrudRepository;
 
 public interface AddressRepository extends CrudRepository<Address, Long> {

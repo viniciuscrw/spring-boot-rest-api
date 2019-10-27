@@ -1,4 +1,4 @@
-package com.crud.example.springbootrestapi.app;
+package com.crud.example.customerapi.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,9 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories("com.crud.example.springbootrestapi.repository")
-@ComponentScan(basePackages = { "com.crud.example.springbootrestapi.*" })
-@EntityScan("com.crud.example.springbootrestapi.model")
+@EnableJpaRepositories("com.crud.example.customerapi.repository")
+@ComponentScan(basePackages = {"com.crud.example.customerapi.*"})
+@EntityScan("com.crud.example.customerapi.model")
 public class SpringBootRestApiApplication {
 
 	public static void main(String[] args) {

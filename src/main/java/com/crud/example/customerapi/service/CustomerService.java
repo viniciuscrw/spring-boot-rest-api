@@ -1,7 +1,7 @@
-package com.crud.example.springbootrestapi.service;
+package com.crud.example.customerapi.service;
 
-import com.crud.example.springbootrestapi.model.Customer;
-import com.crud.example.springbootrestapi.repository.CustomerRepository;
+import com.crud.example.customerapi.model.Customer;
+import com.crud.example.customerapi.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

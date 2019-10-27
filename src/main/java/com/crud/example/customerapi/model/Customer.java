@@ -1,4 +1,4 @@
-package com.crud.example.springbootrestapi.model;
+package com.crud.example.customerapi.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -6,6 +6,7 @@ import lombok.Data;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,7 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import java.time.LocalDate;
 
@@ -25,29 +27,29 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
+    @NotBlank
     private String firstName;
 
-    @NotEmpty
+    @NotBlank
     private String lastName;
 
-    @NotEmpty
+    @NotBlank
     @Email
     private String email;
 
-    @NotEmpty
+    @NotBlank
     @CPF
+    @Column(unique = true)
     private String cpf;
 
+    @NotNull
     @Past
     @JsonFormat(pattern = "dd-MM-yyyy")
-    LocalDate birthDate;
+    LocalDate dateOfBirth;
 
-    @OneToOne(
-            mappedBy = "customer",
+    @OneToOne(mappedBy = "customer",
             fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL
-    )
+            cascade = CascadeType.ALL)
     @JsonManagedReference
     private Address address;
     

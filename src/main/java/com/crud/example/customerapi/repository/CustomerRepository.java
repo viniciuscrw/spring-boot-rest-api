@@ -1,6 +1,6 @@
-package com.crud.example.springbootrestapi.repository;
+package com.crud.example.customerapi.repository;
 
-import com.crud.example.springbootrestapi.model.Customer;
+import com.crud.example.customerapi.model.Customer;
 import org.springframework.data.repository.CrudRepository;
 import java.util.Optional;
 

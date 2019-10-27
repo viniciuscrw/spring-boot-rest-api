@@ -1,4 +1,4 @@
-package com.crud.example.springbootrestapi.exception;
+package com.crud.example.customerapi.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

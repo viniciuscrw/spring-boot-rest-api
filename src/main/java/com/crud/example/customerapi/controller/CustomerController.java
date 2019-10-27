@@ -1,9 +1,9 @@
-package com.crud.example.springbootrestapi.controller;
+package com.crud.example.customerapi.controller;
 
-import com.crud.example.springbootrestapi.exception.CustomerNotFoundException;
-import com.crud.example.springbootrestapi.model.Address;
-import com.crud.example.springbootrestapi.model.Customer;
-import com.crud.example.springbootrestapi.service.CustomerService;
+import com.crud.example.customerapi.exception.CustomerNotFoundException;
+import com.crud.example.customerapi.model.Address;
+import com.crud.example.customerapi.model.Customer;
+import com.crud.example.customerapi.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

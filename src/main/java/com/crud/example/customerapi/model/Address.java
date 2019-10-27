@@ -1,9 +1,8 @@
-package com.crud.example.springbootrestapi.model;
+package com.crud.example.customerapi.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,9 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.Pattern;
 
 @Data
 @Entity
@@ -24,22 +23,26 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
+    @NotBlank
     private String street;
 
     @NotNull
     private int number;
 
+    @NotNull
+    @Pattern(regexp="[\\d]{8}")
+    private String cep;
+
     private String complement;
 
-    @NotEmpty
+    @NotBlank
     private String neighbourhood;
 
-    @NotEmpty
+    @NotBlank
     private String city;
 
-    @NotEmpty
-    @Size(min = 2, max = 2)
+    @NotBlank
+    @Pattern(regexp="[\\w]{2}")
     private String uf;
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)

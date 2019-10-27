@@ -1,4 +1,4 @@
-package com.crud.example.springbootrestapi;
+package com.crud.example.customerapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
