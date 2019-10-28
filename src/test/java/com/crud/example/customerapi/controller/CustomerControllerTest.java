@@ -1,6 +1,6 @@
 package com.crud.example.customerapi.controller;
 
-import com.crud.example.customerapi.app.CustomerApiApplication;
+import com.crud.example.customerapi.CustomerApiApplication;
 import com.crud.example.customerapi.model.Address;
 import com.crud.example.customerapi.model.Customer;
 import com.crud.example.customerapi.service.CustomerService;

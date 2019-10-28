@@ -26,7 +26,7 @@ Once you've cloned this repository on your machine, you can proceed with the fol
 #### Swagger UI
 
 With the application running, you can visualize the API documentation in:
-* http://localhost:8080/swagger-ui.hmtl
+* http://localhost:8080/swagger-ui.html
 
 #### Postman
 
