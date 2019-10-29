@@ -10,7 +10,6 @@ import org.spockframework.spring.SpringBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
-import org.springframework.context.ApplicationContext
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.MvcResult
@@ -32,9 +31,6 @@ class CustomerControllerSpec extends Specification {
 
     @Autowired
     MockMvc mvc
-
-    @Autowired
-    ApplicationContext context
 
     Gson gson
 
@@ -68,11 +64,11 @@ class CustomerControllerSpec extends Specification {
         expectedStatus == result.getResponse().getStatus()
 
         where:
-        customer                        | expectedStatus
-        buildValidCustomer()            | 201
-        buildInvalidCPFCustomer()       | 400
-        buildEmptyFirstNameCustomer()   | 400
-        buildNullAddressCustomer()      | 400
+        customer                       | expectedStatus
+        buildValidCustomer()           | 201
+        buildInvalidCPFCustomer()      | 400
+        buildEmptyFirstNameCustomer()  | 400
+        buildNullDateOfBirthCustomer() | 400
     }
 
 
@@ -90,9 +86,9 @@ class CustomerControllerSpec extends Specification {
         customer
     }
 
-    Customer buildNullAddressCustomer() {
+    Customer buildNullDateOfBirthCustomer() {
         Customer customer = buildValidCustomer()
-        customer.setFirstName("")
+        customer.setDateOfBirth(null)
 
         customer
     }
