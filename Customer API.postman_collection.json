@@ -19,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"firstName\": \"João Ricardo\",\n\t\"lastName\": \"Da Silva\",\n\t\"email\": \"jrdasilva@gmail.com\",\n\t\"cpf\": \"93350016006\",\n\t\"dateOfBirth\": \"22-02-1989\",\n\t\"address\": {\n\t\t\"street\": \"Rua Jeronimo Pattaro\",\n\t\t\"number\": \"71\",\n\t\t\"cep\": \"13400111\",\n\t\t\"complement\": \"Casa B\",\n\t\t\"neighbourhood\": \"Vila Santa Isabel\",\n\t\t\"city\": \"Campinas\",\n\t\t\"uf\": \"SP\"\n\t}\n}",
+					"raw": "{\n\t\"firstName\": \"João Ricardo\",\n\t\"lastName\": \"Da Silva\",\n\t\"email\": \"jrdasilva@gmail.com\",\n\t\"cpf\": \"93350016006\",\n\t\"dateOfBirth\": \"22-02-1989\",\n\t\"address\": {\n\t\t\"street\": \"Rua Jeronimo Pattaro\",\n\t\t\"number\": \"71\",\n\t\t\"zipCode\": \"13400111\",\n\t\t\"complement\": \"Casa B\",\n\t\t\"neighbourhood\": \"Vila Santa Isabel\",\n\t\t\"city\": \"Campinas\",\n\t\t\"uf\": \"SP\"\n\t}\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -27,7 +27,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/customers/new",
+					"raw": "http://localhost:8080/customers/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -35,7 +35,7 @@
 					"port": "8080",
 					"path": [
 						"customers",
-						"new"
+						""
 					]
 				},
 				"description": "Makes a POST request to create a new customer in the application."
@@ -56,7 +56,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"firstName\": \"Maurício\",\n\t\"lastName\": \"Andrade\",\n\t\"email\": \"mandrade@gmail.com\",\n\t\"cpf\": \"90400069032\",\n\t\"dateOfBirth\": \"15-10-1991\",\n\t\"address\": {\n\t\t\"street\": \"Rua Morais Barros\",\n\t\t\"number\": \"998\",\n\t\t\"cep\": \"13400356\",\n\t\t\"complement\": \"AP 52\",\n\t\t\"neighbourhood\": \"Centro\",\n\t\t\"city\": \"Piracicaba\",\n\t\t\"uf\": \"SP\"\n\t}\n}",
+					"raw": "{\n\t\"firstName\": \"Maurício\",\n\t\"lastName\": \"Andrade\",\n\t\"email\": \"mandrade@gmail.com\",\n\t\"cpf\": \"90400069032\",\n\t\"dateOfBirth\": \"15-10-1991\",\n\t\"address\": {\n\t\t\"street\": \"Rua Morais Barros\",\n\t\t\"number\": \"998\",\n\t\t\"zipCode\": \"13400356\",\n\t\t\"complement\": \"AP 52\",\n\t\t\"neighbourhood\": \"Centro\",\n\t\t\"city\": \"Piracicaba\",\n\t\t\"uf\": \"SP\"\n\t}\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -64,7 +64,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/customers/new",
+					"raw": "http://localhost:8080/customers/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -72,7 +72,7 @@
 					"port": "8080",
 					"path": [
 						"customers",
-						"new"
+						""
 					]
 				},
 				"description": "Makes a POST request to create a new customer in the application."
@@ -93,7 +93,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"firstName\": \"Luísa\",\n\t\"lastName\": \"Furlan Blanc\",\n\t\"email\": \"luisafb@ymail.com\",\n\t\"cpf\": \"50195701097\",\n\t\"dateOfBirth\": \"22-08-1993\",\n\t\"address\": {\n\t\t\"street\": \"Rua Coronel Quirini\",\n\t\t\"number\": \"315\",\n\t\t\"cep\": \"01211200\",\n\t\t\"neighbourhood\": \"Centro\",\n\t\t\"city\": \"Salvador\",\n\t\t\"uf\": \"BA\"\n\t}\n}",
+					"raw": "{\n\t\"firstName\": \"Luísa\",\n\t\"lastName\": \"Furlan Blanc\",\n\t\"email\": \"luisafb@ymail.com\",\n\t\"cpf\": \"50195701097\",\n\t\"dateOfBirth\": \"22-08-1993\",\n\t\"address\": {\n\t\t\"street\": \"Rua Coronel Quirini\",\n\t\t\"number\": \"315\",\n\t\t\"zipCode\": \"01211200\",\n\t\t\"neighbourhood\": \"Centro\",\n\t\t\"city\": \"Salvador\",\n\t\t\"uf\": \"BA\"\n\t}\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -101,7 +101,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/customers/new",
+					"raw": "http://localhost:8080/customers/",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -109,7 +109,7 @@
 					"port": "8080",
 					"path": [
 						"customers",
-						"new"
+						""
 					]
 				},
 				"description": "Makes a POST request to create a new customer in the application."
@@ -195,7 +195,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"firstName\": \"Luísa\",\n\t\"lastName\": \"Furlan Blanc\",\n\t\"email\": \"luisafb@ymail.com\",\n\t\"cpf\": \"50195701097\",\n\t\"dateOfBirth\": \"22-08-1994\",\n\t\"address\": {\n\t\t\"street\": \"Rua Coronel Quirino\",\n\t\t\"number\": \"318\",\n\t\t\"cep\": \"13800435\",\n\t\t\"neighbourhood\": \"Centro\",\n\t\t\"city\": \"Campinas\",\n\t\t\"uf\": \"SP\"\n\t}\n}",
+					"raw": "{\n\t\"firstName\": \"Luísa\",\n\t\"lastName\": \"Furlan Blanc\",\n\t\"email\": \"luisafb@ymail.com\",\n\t\"cpf\": \"50195701097\",\n\t\"dateOfBirth\": \"22-08-1994\",\n\t\"address\": {\n\t\t\"street\": \"Rua Coronel Quirino\",\n\t\t\"number\": \"318\",\n\t\t\"zipCode\": \"13800435\",\n\t\t\"neighbourhood\": \"Centro\",\n\t\t\"city\": \"Campinas\",\n\t\t\"uf\": \"SP\"\n\t}\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -203,7 +203,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/customers/update/3",
+					"raw": "http://localhost:8080/customers/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -211,7 +211,6 @@
 					"port": "8080",
 					"path": [
 						"customers",
-						"update",
 						"3"
 					]
 				}
@@ -219,8 +218,43 @@
 			"response": []
 		},
 		{
-			"name": "Delete the second customer",
+			"name": "Try to delete the second customer with no authentication",
 			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/customers/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"customers",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Now delete the second customer with proper authentication",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"url": {
