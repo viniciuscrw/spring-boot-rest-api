@@ -61,6 +61,10 @@ public class CustomerController {
     }
 
     @ApiOperation(value = "Get a customer by ID")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved a customer"),
+            @ApiResponse(code = 404, message = "The customer you tried to search for by ID was not found")
+    })
     @GetMapping("/{id}")
     public ResponseEntity<Customer> findById(
             @ApiParam(value = "Customer ID which corresponding object will be retrieved") @PathVariable Long id) {
@@ -70,7 +74,12 @@ public class CustomerController {
     }
 
     @ApiOperation(value = "Add a new customer")
-    @PostMapping("/new")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Successfully created a customer"),
+            @ApiResponse(code = 400, message = "Some of the parameters in the request body might be invalid"),
+            @ApiResponse(code = 409, message = "Trying to create a customer with an existing CPF resulted in conflict")
+    })
+    @PostMapping
     public ResponseEntity<Customer> create(
             @ApiParam(value = "New customer object to be stored in database") @Valid @RequestBody Customer customer,
             UriComponentsBuilder builder) {
@@ -82,7 +91,11 @@ public class CustomerController {
     }
 
     @ApiOperation(value = "Update an existing customer")
-    @PutMapping("/update/{id}")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully updated a customer"),
+            @ApiResponse(code = 404, message = "The customer you tried to update by its ID was not found")
+    })
+    @PutMapping("/{id}")
     public ResponseEntity<Customer> update(
             @ApiParam(value = "Customer ID to update") @PathVariable Long id,
             @ApiParam(value = "Updated customer object") @Valid @RequestBody Customer updatedCustomer) {
@@ -92,11 +105,16 @@ public class CustomerController {
                     Address address = updatedCustomer.getAddress();
                     address.setId(customer.getAddress().getId());
                     log.debug("Customer with ID " + id + " updated.");
-                    return ResponseEntity.ok(customerService.save(updatedCustomer));
+                    return ResponseEntity.ok(customerService.update(updatedCustomer));
                 }).orElseThrow(() -> new CustomerNotFoundException(String.format(ID_NOT_FOUND, id)));
     }
 
     @ApiOperation(value = "Delete a customer")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully deleted a customer"),
+            @ApiResponse(code = 404, message = "The customer you tried to delete by its ID was not found"),
+            @ApiResponse(code = 401, message = "You tried to delete a customer with no proper authentication")
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity delete(
             @ApiParam(value = "Customer ID from which object will be deleted from database") @PathVariable Long id) {

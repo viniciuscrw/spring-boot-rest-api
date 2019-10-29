@@ -17,18 +17,26 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Optional;
+
+import static java.net.HttpURLConnection.HTTP_BAD_REQUEST;
+import static java.net.HttpURLConnection.HTTP_CREATED;
+import static java.net.HttpURLConnection.HTTP_NOT_FOUND;
+import static java.net.HttpURLConnection.HTTP_OK;
+import static java.net.HttpURLConnection.HTTP_UNAUTHORIZED;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = CustomerApiApplication.class)
@@ -39,13 +47,11 @@ public class CustomerControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @Autowired
+    private WebApplicationContext context;
+
     @MockBean
     private CustomerService customerService;
-
-    private static final int HTTP_OK = 200;
-    private static final int HTTP_NOT_FOUND = 404;
-    private static final int HTTP_CREATED = 201;
-    private static final int HTTP_BAD_REQUEST = 400;
 
     private Address mockAddress;
     private Customer mockCustomer;
@@ -112,7 +118,7 @@ public class CustomerControllerTest {
 
         String jsonCustomer = gson.toJson(mockCustomer);
 
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.post("/customers/new")
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.post("/customers/")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(jsonCustomer);
 
@@ -130,7 +136,7 @@ public class CustomerControllerTest {
 
         String jsonCustomer = gson.toJson(mockCustomer);
 
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.post("/customers/new")
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.post("/customers/")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(jsonCustomer);
 
@@ -149,13 +155,12 @@ public class CustomerControllerTest {
 
         String jsonCustomer = gson.toJson(mockCustomer);
 
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.put("/customers/update/1")
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.put("/customers/1")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(jsonCustomer);
 
         MvcResult result = mockMvc.perform(requestBuilder).andReturn();
 
-        JSONAssert.assertEquals(jsonCustomer, result.getResponse().getContentAsString() , true);
         Assert.assertEquals(HTTP_OK, result.getResponse().getStatus());
     }
 
@@ -166,7 +171,7 @@ public class CustomerControllerTest {
 
         String jsonCustomer = gson.toJson(mockCustomer);
 
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.put("/customers/update/1")
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.put("/customers/1")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .content(jsonCustomer);
 
@@ -176,6 +181,23 @@ public class CustomerControllerTest {
     }
 
     @Test
+    public void deleteACustomerWithNoAuthenticationConfig() throws Exception {
+        Mockito.when(customerService.findById(Mockito.anyLong()))
+                .thenReturn(Optional.of(mockCustomer));
+
+        String jsonCustomer = gson.toJson(mockCustomer);
+
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.delete("/customers/1")
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(jsonCustomer);
+
+        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+
+        Assert.assertEquals(HTTP_UNAUTHORIZED, result.getResponse().getStatus());
+    }
+
+    @Test
+    @WithMockUser(username = "admin", roles = "ADMIN")
     public void deleteACustomer() throws Exception {
         Mockito.when(customerService.findById(Mockito.anyLong()))
                 .thenReturn(Optional.of(mockCustomer));
@@ -198,7 +220,7 @@ public class CustomerControllerTest {
         address.setComplement("AP 31");
         address.setNumber(71);
         address.setNeighbourhood("Vila Santa Isabel");
-        address.setCep("13400111");
+        address.setZipCode("13400111");
         address.setCity("Campinas");
         address.setUf("SP");
         

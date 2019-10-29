@@ -32,7 +32,7 @@ public class Address {
 
     @NotNull
     @Pattern(regexp="[\\d]{8}")
-    private String cep;
+    private String zipCode;
 
     private String complement;
 
